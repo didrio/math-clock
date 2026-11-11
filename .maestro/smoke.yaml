@@ -1,13 +1,33 @@
-# Smoke test: the app launches, both tabs render, and a setting can be changed.
-# Run with `npm run e2e` (see scripts/e2e.mjs). Docs: https://docs.maestro.dev
+# Smoke test: the app launches, an alarm can be added and deleted, the practice challenge opens,
+# and a setting can be changed. Run with `npm run e2e` (see scripts/e2e.mjs). Docs: https://docs.maestro.dev
 appId: ${APP_ID}
 name: Smoke
 ---
 - runFlow: subflows/launch.yaml
 - extendedWaitUntil:
-    visible: 'Start building'
+    visible: 'No alarms yet'
     timeout: 60000
-- takeScreenshot: home
+- takeScreenshot: alarms-empty
+
+# Add an alarm (default time) with a label.
+- tapOn: 'Add alarm'
+- tapOn: 'Label'
+- inputText: 'Smoke'
+- tapOn: 'Save'
+- assertVisible: '.*Smoke.*'
+- takeScreenshot: alarms-list
+
+# Practice opens the challenge and can be closed.
+- tapOn: 'Practice'
+- assertVisible: 'Problem 1 of 3'
+- takeScreenshot: challenge
+- tapOn: 'Close'
+
+# Delete the alarm again so the flow leaves the app as it found it.
+- tapOn: '.*Smoke.*'
+- tapOn: 'Delete alarm'
+- tapOn: 'Delete'
+- assertVisible: 'No alarms yet'
 
 - tapOn: 'Settings'
 - assertVisible: 'Version'

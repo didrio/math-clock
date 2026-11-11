@@ -20,6 +20,11 @@ export default function RootLayout() {
     <AppProviders>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="alarm-editor" options={{ presentation: 'modal', headerShown: true }} />
+        <Stack.Screen
+          name="challenge"
+          options={{ presentation: 'fullScreenModal', gestureEnabled: false }}
+        />
         <Stack.Screen name="+not-found" options={{ headerShown: true, title: 'Not found' }} />
       </Stack>
     </AppProviders>

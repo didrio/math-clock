@@ -9,9 +9,10 @@
  */
 import { Platform } from 'react-native';
 
+/** Alarm orange. Light value keeps 4.5:1 contrast on white; dark value on black. */
 const brand = {
-  light: '#0A7CFF',
-  dark: '#3B9BFF',
+  light: '#C2410C',
+  dark: '#FB923C',
 } as const;
 
 export const lightColors = {
@@ -50,7 +51,7 @@ export const darkColors: ThemeColors = {
   textTertiary: '#636366',
   border: '#38383A',
   primary: brand.dark,
-  onPrimary: '#FFFFFF',
+  onPrimary: '#000000',
   danger: '#FF5A4F',
   success: '#3DD16B',
   warning: '#FFB340',
@@ -90,6 +91,8 @@ export const fonts = Platform.select({
  * Use via `<Text variant="headline">` rather than styling text by hand.
  */
 export const typography = {
+  /** Big numerals: alarm times and math problems. Pair with `fontVariant: ['tabular-nums']`. */
+  display: { fontSize: 56, lineHeight: 64, fontWeight: '300' },
   largeTitle: { fontSize: 34, lineHeight: 41, fontWeight: '700' },
   title: { fontSize: 28, lineHeight: 34, fontWeight: '700' },
   title2: { fontSize: 22, lineHeight: 28, fontWeight: '700' },
@@ -105,7 +108,7 @@ export const typography = {
   {
     fontSize: number;
     lineHeight: number;
-    fontWeight: '400' | '500' | '600' | '700';
+    fontWeight: '300' | '400' | '500' | '600' | '700';
     fontFamily?: string;
   }
 >;

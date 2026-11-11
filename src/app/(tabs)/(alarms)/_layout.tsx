@@ -1,9 +1,9 @@
 import { Stack } from 'expo-router';
 
-export default function HomeStackLayout() {
+export default function AlarmsStackLayout() {
   return (
     <Stack screenOptions={{ headerLargeTitleEnabled: true }}>
-      <Stack.Screen name="index" options={{ title: 'Home' }} />
+      <Stack.Screen name="index" options={{ title: 'Alarms' }} />
     </Stack>
   );
 }

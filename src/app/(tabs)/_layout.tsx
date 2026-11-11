@@ -18,9 +18,9 @@ export default function TabsLayout() {
       tintColor={theme.colors.primary}
       backgroundColor={isAndroid ? theme.colors.background : undefined}
       indicatorColor={isAndroid ? theme.colors.surfacePressed : undefined}>
-      <NativeTabs.Trigger name="(home)">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf={{ default: 'house', selected: 'house.fill' }} md="home" />
+      <NativeTabs.Trigger name="(alarms)">
+        <NativeTabs.Trigger.Label>Alarms</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf={{ default: 'alarm', selected: 'alarm.fill' }} md="alarm" />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="settings">

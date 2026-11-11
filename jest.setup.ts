@@ -29,3 +29,18 @@ jest.mock('expo-haptics', () => ({
   ImpactFeedbackStyle: { Light: 'light', Medium: 'medium', Heavy: 'heavy' },
   NotificationFeedbackType: { Success: 'success', Warning: 'warning', Error: 'error' },
 }));
+
+// Native SwiftUI / Jetpack Compose views (@expo/ui) don't exist in Jest: render hosts as plain
+// containers and the pickers as nothing. Tests drive the surrounding React Native UI instead.
+jest.mock('@expo/ui/swift-ui', () => ({
+  Host: ({ children }: { children?: unknown }) => children,
+  DatePicker: () => null,
+}));
+jest.mock('@expo/ui/swift-ui/modifiers', () => ({
+  datePickerStyle: () => ({}),
+  labelsHidden: () => ({}),
+}));
+jest.mock('@expo/ui/jetpack-compose', () => ({
+  Host: ({ children }: { children?: unknown }) => children,
+  DateTimePicker: () => null,
+}));
